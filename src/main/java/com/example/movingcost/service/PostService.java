@@ -77,12 +77,13 @@ public class PostService {
 
     // ソート
     private Sort buildSort(String sort) {
-        if (sort == null) return Sort.by(Sort.Direction.DESC, "createdAt");
+        if (sort == null) return Sort.by(Sort.Direction.DESC, "movingDate");
         return switch (sort) {
+            case "oldest"    -> Sort.by(Sort.Direction.ASC,  "movingDate");
             case "cost_asc"  -> Sort.by(Sort.Direction.ASC,  "cost");
             case "cost_desc" -> Sort.by(Sort.Direction.DESC, "cost");
             case "rating"    -> Sort.by(Sort.Direction.DESC, "rating");
-            default          -> Sort.by(Sort.Direction.DESC, "createdAt");
+            default          -> Sort.by(Sort.Direction.DESC, "movingDate");
         };
     }
 }
